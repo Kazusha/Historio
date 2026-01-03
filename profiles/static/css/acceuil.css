@@ -1,0 +1,77 @@
+header{
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    background-color: #FFF9EF;
+}
+body{
+    background-color: #FFF9EF;
+}
+
+.debut{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 40px;
+    border-left: 4px solid blueviolet;
+  padding-left: 15px;
+  margin-left: 0;
+}
+.titre{
+    color: #7248cd;
+}
+.boutonins{
+    background-color: #7248cd;
+    color: #FFF9EF;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+}
+
+.boutoncon{
+    background-color: #FFF9EF;
+    color: #7248cd;
+    border-radius: 10px;
+    font-size: 16px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3 ease;
+
+}
+.boutoncon:hover{
+    background-color: #FFF9EF;
+    color: #7248cd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.boutonins:hover{
+    background-color: #7248cd;
+    color: #FFF9EF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.livre{
+display: flex;
+justify-content: center;
+align-items: flex-end;
+min-height: 50vh;
+}
+.livreim{
+    width: 200px;
+    height: auto;
+}
+.livreim:hover{
+    border-radius: 15px;
+    transform: rotate(2deg);
+}
+.description{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
