@@ -1,0 +1,69 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title> Inscription</title>
+        <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
+        <link rel="icon" type="image/png" size="16x16" href="{% static 'images/historio.png' %}">
+         <link rel="icon" type="image/png" size="32x32" href="{% static 'images/historio.png' %}">
+    </head>
+    <body>
+        <div class="box_Inscription">
+            <div class="container">
+               <div class="img">
+                <img src="{% static 'images/livre.png' %}" alt="historio" class="img2">
+            </div>
+              <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                      <h1 class="compte">Creez Votre Compte Historio</h1>
+                      <a class="pseudo"> Pseudo:</a>
+                {{ form.username | add_class:"input-field"}}
+                </div>
+
+                <div class="form-group">
+                <a class="email">Email</a>
+                {{form.email| add_class:"input-field"}}
+                </div>
+                
+                 <div class="form-group">
+                <a class="mdp"> Mot de Passe:</a>
+                {{form.password1 | add_class:"input-field"}}
+                </div>
+
+                 <div class="form-group">
+                <a class="mdp"> Confirmer le mode de passe</a>
+                {{form.password2 | add_class:"input-field"}}
+                </div>
+                <div class="form-group">
+    <label>Sélectionner une photo de profil</label>
+<div class="file-preview">
+   <input type="file" name="photo_user" id="photoInput" hidden>
+
+    <button type="button" class="file"
+            onclick="document.getElementById('photoInput').click()">
+        Choisir une photo
+    </button>
+
+    <div class="preview">
+        <img id="previewImage">
+    </div>
+</div>
+</div>
+ 
+
+                 
+
+         
+
+                <button type="submit" class="submit">S'inscrire</button>
+              </form>
+            </div>
+           
+        </div>
+        
+<script src="{% static 'js/photo_preview.js' %}"></script>
+    </body>
+</html>

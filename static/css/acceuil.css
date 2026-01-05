@@ -25,12 +25,10 @@ body{
 
 }
 .logo:hover{
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     transition: rotate(2deg);
 }
 .titre:hover{
     color: blueviolet;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 .boutonins{
     background-color: #7248cd;
