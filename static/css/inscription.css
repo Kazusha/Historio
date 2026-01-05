@@ -83,13 +83,13 @@ form{
     transition: background-color 0.3 ease;
 }
 .file-preview {
-    display: flex;          /* aligne horizontalement */
-    align-items: center;    /* centre verticalement */
-    gap: 15px;              /* espace entre bouton et image */
+    display: flex;          
+    align-items: center;    
+    gap: 15px;              
 }
 
 .file-preview .preview img {
-    max-width: 100px;       /* taille de la preview */
+    max-width: 100px;       
     border: 2px solid #ccc;
     border-radius: 8px;
 }
