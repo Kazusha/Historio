@@ -16,7 +16,7 @@ body{
     border: 3px solid #7248cd;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 
 }
 .compte{
@@ -59,7 +59,7 @@ body{
 
 }
 .submit:hover{
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 
 }
 form{

@@ -3,6 +3,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Historio-Accueil</title>
         <link rel="stylesheet" href="{% static 'css/acceuil.css' %}">
         <link rel="icon" type="image/png"  sizes="16x16" href="{% static 'images/historio.png' %}">
@@ -16,7 +17,7 @@
             </div>
             <nav>
                 <a href="{% url 'inscription' %}" ><button class="boutonins">S'inscrire</button></a>
-                <a href="/login" ><button class="boutoncon">Se Connecter</button></a>
+                <a href="{% url 'login' %}" ><button class="boutoncon">Se Connecter</button></a>
             </nav>
         </header>
          <div class="livre">

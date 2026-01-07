@@ -1,0 +1,63 @@
+body{
+    background-color: #FFF9EF ;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+
+}
+.connexion{
+    display: flex;
+    align-items: flex-start;
+    width: 850px;
+    height: auto;
+    border: 3px solid #7248cd;
+    border-radius: 2%;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.2);
+    gap: 20px;
+
+}
+.image{
+    width: 300px;
+}
+.image:hover{
+    transform: rotate(2deg);
+}
+.card_container{
+    flex-direction: column;
+    align-items: flex-start;
+    
+
+}
+.titre{
+    color:#7248cd ;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+}
+.input-field{
+    width: 400px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #FFFFFF;
+    margin-bottom: 30px;
+    font-size: medium;
+    height: auto;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+.submit{
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    background-color: #7248cd;
+    color:#FFF9EF;
+    border-radius: 5px ;
+}
+.submit:hover{
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}

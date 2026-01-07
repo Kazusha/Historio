@@ -13,5 +13,13 @@ class RegisterForm(UserCreationForm):
         model = User
         fields = ("username","email","photo_user","password1","password2")
 
+    def save(self , commit=True):
+        user = super().save(commit=False)
+        user.username = self.cleaned_data["email"]
+        if commit:
+            user.save()
+        return user    
+
+
 class LoginForm(AuthenticationForm):
-    pass
+    username = forms.EmailField(label="email")
