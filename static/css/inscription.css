@@ -32,10 +32,12 @@ body{
 .img2{
     width: 300px;
     height: auto;
+    transition: transform 0.3 ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
 
 }
 .img2:hover{
-    transform: rotate(2deg);
+    transform: rotate(2deg) scale(1.5);
 }
 .input-field {
     width: 400px;
@@ -48,14 +50,17 @@ body{
 }
 
 .submit{
-    background-color:#7248cd ;
-    color: #ffffff;
-    border-radius: 10px;
-    font-size: 16px;
-    width: 120px;
-    height: 40px;
+     width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #7248cd;
+    color: #FFF9EF;
+    border: none;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3 ease;
+    font-family: Cambria, Georgia, Times, serif;
+    transition: all 0.3s ease;
 
 }
 .submit:hover{

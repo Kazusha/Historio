@@ -50,6 +50,17 @@ INSTALLED_APPS = [
 ]
 AUTH_USER_MODEL= 'profiles.User'
 SITE_ID=1
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -141,3 +152,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL='/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_REDIRECT_URL= 'page_utilisateur'
+LOGOUT_REDIRECT_URL = 'login'

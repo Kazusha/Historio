@@ -7,6 +7,9 @@ from django.contrib.auth.decorators import login_required
 def accueil(request):
     return render (request , "Accueil.html")
 
+def pageutilisateur(request):
+    return render(request,"page_utilisateur.html")
+
 def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST , request.FILES)

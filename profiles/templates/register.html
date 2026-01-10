@@ -21,22 +21,22 @@
                 <div class="form-group">
                       <h1 class="compte">Creez Votre Compte Historio</h1>
                       <a class="pseudo"> Pseudo:</a>
-                {{ form.username | add_class:"input-field"}}
+                {{ form.username|add_class:"input-field"|attr:"placeholder:VotrePseudo"}}
                 </div>
 
                 <div class="form-group">
                 <a class="email">Email</a>
-                {{form.email| add_class:"input-field"}}
+                {{form.email| add_class:"input-field"|attr:"placeholder:votreemail@gmail.com"}}
                 </div>
                 
                  <div class="form-group">
                 <a class="mdp"> Mot de Passe:</a>
-                {{form.password1 | add_class:"input-field"}}
+                {{form.password1 | add_class:"input-field"|attr:"placeholder:******"}}
                 </div>
 
                  <div class="form-group">
                 <a class="mdp"> Confirmer le mode de passe</a>
-                {{form.password2 | add_class:"input-field"}}
+                {{form.password2 | add_class:"input-field"|attr:"placeholder:*******"}}
                 </div>
                 <div class="form-group">
     <label>Sélectionner une photo de profil</label>

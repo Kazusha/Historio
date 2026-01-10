@@ -1,39 +1,68 @@
-{% load  static %}
+{% load static %}
 {% load widget_tweaks %}
+{% load socialaccount %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Connection</title>
-        <link rel="stylesheet" href="{% static 'css/connexion.css' %}">
-        <link rel="icon" type="images/png" size="32x32" href="{% static 'images/historio.png' %}">
-        <link rel="icon" type="images/png" sizes="16x16" href="{% static 'images/historio.png'%}">
-    </head>
-    <body>
-        <div class ="connexion">
-            <div class ="image">
-                <img src="{% static 'images/livre.png' %}" class="image" alt="image">
-                 </div>
-            <div class = " card_container">
-             <form method="POST" enctype="multipart/form-data">
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - Historio</title>
+    <link rel="stylesheet" href="{% static 'css/connexion.css' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/historio.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/historio.png' %}">
+</head>
+<body>
+    <div class="connexion">
+        <div class="image-section">
+            <img src="{% static 'images/livre.png' %}" class="livre" alt="Logo Historio">
+        </div>
+
+        <div class="card_container">
+            <span class="titre">Connectez-vous à votre compte Historio</span>
+
+            <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
-                    <div class="form-group">
-                    <a class="titre"> Connecter vous a votre compte Historio</a>
+
+                {% if form.non_field_errors %}
+                    <div style="color: #d32f2f; margin-bottom: 20px; padding: 10px; background-color: #ffebee; border-radius: 5px;">
+                        {{ form.non_field_errors }}
                     </div>
-                
-                 <div class="form-group">
-                       <a>Email</a>
-                       {{form.username | add_class:"input-field"}}
-                 </div>
-                 <div class="form-group">
-                    <a> Mot de Passe</a>
-                    {{form.password| add_class:"input-field"}}
-                 </div>
-                 <button type="submit" class="submit">Se Connecter</button>
-             </form>
-            
+                {% endif %}
+
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">Email</label>
+                    {{ form.username|add_class:"input-field"|attr:"placeholder:votre@email.com" }}
+                    {% if form.username.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.username.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+                    {{ form.password|add_class:"input-field"|attr:"placeholder:••••••••" }}
+                    {% if form.password.errors %}
+                        <ul class="errorlist">
+                            {% for error in form.password.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+
+                <button type="submit" class="submit">Se connecter</button>
+
+                <div class="divider">ou</div>
+
+                <a href="{% provider_login_url 'google' %}" class="google-btn">
+                    <img src="{% static 'images/chrome.png' %}" class="coco" alt="Google">
+                    <span>Continuer avec Google</span>
+                </a>
+            </form>
         </div>
-        </div>
-        
-    </body>
+    </div>
+</body>
 </html>
