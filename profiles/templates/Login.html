@@ -24,7 +24,7 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="{{ form.username.id_for_label }}">Email</label>
-                    {{ form.username|add_class:"input-field"|attr:"placeholder:votre@email.com" }}
+                    {{ form.email|add_class:"input-field"|attr:"placeholder:votre@email.com" }}
                 </div>
 
                 <div class="form-group">

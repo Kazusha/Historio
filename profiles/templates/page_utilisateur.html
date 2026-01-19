@@ -9,4 +9,40 @@
         <link rel="icon" type="image\png" sizes="16x16" href="{% static 'images/historio.png' %}">
         <link rel="icon" type="image\png" sizes="32x32" href="{% static 'images/historio.png' %}">
     </header>    
+    <body>
+        <header>
+             <div class="debut">
+                <img src="{% static 'images/historio.png' %}" alt="historiologo" class="logo" width="80px">
+                <a class="titre">Historio</a>
+            </div>
+        </header>
+        <div class="layout">
+            <aside class="left">
+                <nav class="nav">
+                    <a href="#Accueil" class="nav-item active">
+                        <img src="{% static 'images/home-6-xxl.png' %}" alt="accueil" class="iconhome">                        <span>Accueil</span>
+                    </a>
+                    <a href="#Livres"  class="nav-item">
+                        <img src="{% static 'images/iconlivre.png' %}" alt="iconlivre" class="icolivre">
+                        <span>Mes Livres</span>
+                    </a>
+                    <a href="#Historique" class="nav-item"> 
+                        <img src="{% static 'images/iconhisto.png' %}" alt="icohisto" class="icohisto">
+                        Historiques
+                    </a>
+                </nav>
+                <a class="profile">
+                    {% if request.user.photo_user %}
+                    <img src="{{ request.user.photo_user.url }}" alt="pdp" class="avatar">
+                    {% else %}
+                    <img src="{% static 'images/defaut.png' %}" alt="defaut" class="avatar">
+                    {% endif %}
+                    <div class="info">
+                        <span class="pseudo">{{request.user.username}}</span>
+                    </div>
+                </a>
+            </aside>
+            <main class="center"> Fil D'actualite</main>
+        </div>
+    </body>    
 </html>    

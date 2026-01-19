@@ -21,16 +21,18 @@ def register_view(request):
          form = RegisterForm()
     return render(request , 'register.html', {'form' : form})   
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import login
+from .forms import LoginForm
+
 def login_view(request):
-    if request.method == 'POST':
-        form= LoginForm(request , data=request.POST)
-        if form.is_valid():
-            user = form.get_user()
-            login(request ,user)
-            return redirect('page_utilisataur')
-    else:
-         form = LoginForm()
-    return render(request , 'login.html', {'form':form})  
+    form = LoginForm(request.POST or None)
+    if form.is_valid():
+        user = form.cleaned_data["user"]
+        login(request, user)
+        return redirect("page_utilisateur")
+    return render(request, "login.html", {"form": form})
+
 
 @login_required(login_url='/login/')
 def page_protegee(request):
