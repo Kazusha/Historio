@@ -28,9 +28,6 @@
                      <a href="#notifications" class="nav-item" data-tooltip="Notifications">
                         <img src="{% static 'images/notification.png' %}" alt="notif" class="notif">
                      </a>
-                     <a href="#recherche" class="nav-item" data-tooltip="Rechercher">
-                        <img src="{% static 'images/recherche.png' %}" alt="recherche" class="icorec">
-                     </a>
                 </nav>
 
                 <a class="profile" data-tooltip="Profil">
@@ -41,7 +38,15 @@
                     {% endif %}
                 </a>
             </aside>
-            <main class="center"> Fil D'actualite</main>
+            <main class="center">
+                <nav class="main-center">
+                    <form class="search-form" role="search">    
+                        <img src="{% static 'images/recherche.png' %}" alt="recherche" class="icorec">
+                        <input type="search" class="search-input" placeholder="Rechercher un livre,un auteur..." aria-label="Champ de recherche">
+                    </form>
+                </nav>
+                    
+                 </main>
         </div>
     </body>    
 </html>    
