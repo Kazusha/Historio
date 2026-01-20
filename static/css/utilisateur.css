@@ -1,7 +1,8 @@
 body{
     margin: 0;
-    background-color: #FFF9EF;
+    background-color: #ffffff;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    overflow: hidden;
 }
 
 .layout {
@@ -10,7 +11,8 @@ body{
 }
 
 .left{
-    width: 20%;
+    position: fixed;
+    width: 4%;
     padding: 20px;
     position: sticky;
     top: 0;
@@ -20,10 +22,11 @@ body{
 }
 
 .center{
-    width: 80%;
+    width: 96%;
     padding: 20px;
-    border-left: 4px solid #7248cd;
+    border-left: 2px solid #F5F5DC;
     min-height: 100vh;
+    overflow-y: auto;
 }
 
 .debut{
@@ -43,58 +46,114 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 40px;
 }
 
 .nav-item{
+    position: relative;
     text-decoration: none;
     display: flex;            
     align-items: center;
     gap: 10px;
-    color: #7248cd;
+    color: black;
     font-size: 25px;
-    padding: 12px 16px;
+    padding: 15px;
     transition: background 0.2s;
 }
+.nav-item::after{
+    content: attr(data-tooltip);
+  position: absolute;
+  left: 110%;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
 
-.nav-item:hover {
-    border-left: 4px solid blueviolet;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
 }
-
+.nav-item:hover::after{
+    opacity: 1;
+}
+.nav-item:hover {
+    border-radius: 15px;
+    background-color: #fff4f9;
+}
 .nav-item.active{
-    border-left: 4px solid blueviolet;
+    border-radius: 15px;
+    background-color: #fff4f9;
+
 }
 
 .icolivre{
     width: 35px;
-    height: 25px;
+    height: 35px;
     object-fit: contain;
 }
 
-.icohisto, .iconhome {
-    width: 25px;
-    height: 25px;
+.icohisto{
+    width: 35px;
+    height: 35px;
     object-fit: contain;
 }
-
+.iconhome,.notif,.icorec {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+}
+.iconlivre{
+  width: 50px;
+    height:50px;
+    object-fit: contain; 
+}
+.iconlivre:hover{
+    transform: rotate(2deg);
+}
 .profile {
-    margin-top: auto;       
+    margin-top: 100%;
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 12px;
     cursor: pointer;
-    color: #7248cd;
+    color: black;
     transition: background 0.2s;
+    border-radius: 50px;
+    background-color: #ffffff;
 
+}
+.profile::after{
+    content: attr(data-tooltip);
+    position: absolute;
+  left: 110%;
+  top: 76%;
+  transform: translateY(-50%);
+  background: #000;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+.profile:hover::after{
+    opacity: 1;
 }
 
 .profile:hover {
-     border-left: 4px solid blueviolet;
+    background-color: #ffffff;
 
 }
 .profile.active{
-        border-left: 4px solid blueviolet;
-
+background-color: #ffffff;
 }
 .avatar {
     width: 40px;
@@ -106,5 +165,18 @@ body{
 .pseudo {
     font-weight: 600;
     font-size: 20px;
-    color: #7248cd;
+    color: black;
+}
+.historio{
+    text-decoration: none;
+    display: flex;            
+    align-items: center;
+    gap: 10px;
+    color: black;
+    font-size: 25px;
+    padding: 15px;
+    transition: background 0.2s;
+}
+.historio:hover{
+color: #7248cd;
 }
