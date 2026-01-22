@@ -1,6 +1,9 @@
 from django import forms 
 from django.contrib.auth.forms import UserCreationForm
+from .models import Livre , Chapitre
 from django.contrib.auth import get_user_model
+from ckeditor.widgets import CKEditorWidget
+
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
 
@@ -16,7 +19,7 @@ class RegisterForm(UserCreationForm):
 
     def save(self, commit=True):
         user = super().save(commit=False)
-        user.email = self.cleaned_data["email"]  # ✅ corrige ici
+        user.email = self.cleaned_data["email"]  
         if commit:
             user.save()
         return user
@@ -42,3 +45,16 @@ class LoginForm(forms.Form):
 
             cleaned_data["user"] = user 
         return cleaned_data
+    
+class AjouterLivre(forms.ModelForm):
+    class Meta:
+            model = Livre
+            fields = ['titre' , 'couverture' , 'description']
+
+class AjouterChapitre(forms.ModelForm):
+    contenu = forms.CharField(widget=CKEditorWidget)
+    class Meta:
+        model = Chapitre
+        fields=['numero_chap','titre_chap','contenu']
+
+  

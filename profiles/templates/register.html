@@ -7,14 +7,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Inscription</title>
         <link rel="stylesheet" href="{% static 'css/inscription.css' %}">
-        <link rel="icon" type="image/png" size="16x16" href="{% static 'images/historio.png' %}">
-         <link rel="icon" type="image/png" size="32x32" href="{% static 'images/historio.png' %}">
+        <link rel="icon" type="image/png" size="16x16" href="{% static 'images/livreicon.png' %}">
+         <link rel="icon" type="image/png" size="32x32" href="{% static 'images/livreicon.png' %}">
     </head>
     <body>
         <div class="box_Inscription">
             <div class="container">
                <div class="imgback">
-                <img src="{% static 'images/livre.png' %}" alt="historio" class="img2">
+                <img src="{% static 'images/livreicon.png' %}" alt="historio" class="img2">
             </div>
               <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}

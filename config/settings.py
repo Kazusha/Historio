@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     'profiles',
     'widget_tweaks',
+    'ckeditor',
 ]
 AUTH_USER_MODEL= 'profiles.User'
 SITE_ID=1
