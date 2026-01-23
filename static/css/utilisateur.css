@@ -62,7 +62,7 @@ body{
     transition: background 0.2s;
 }
 .nav-item::after{
-    content: attr(data-tooltip);
+ content: attr(data-tooltip);
   position: absolute;
   left: 110%;
   top: 50%;
@@ -78,14 +78,14 @@ body{
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
-.nav-item:hover::after,.nav-item.active::after{
-    opacity: 1;
-    visibility:visible;
+
+.nav-item:not(.active):hover::after {
+  opacity: 1;
+  visibility: visible;
 }
-.nav-item:hover {
-    border-radius: 15px;
-    background-color: #fff4f9;
-}
+
+
+
 .nav-item.active{
     border-radius: 15px;
     background-color: #fff4f9;

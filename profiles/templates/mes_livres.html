@@ -20,7 +20,7 @@
 <div class="empty-state">
     <img src="{% static 'images/livremagic.png' %}" alt="ajouter" class="empty-icon">
     <h2>Bonjour, {{ request.user.username }} tu n'as encore créé aucune histoire :(</h2>
-    <a href="{% url 'ajouterLivre' %}" class="btn-create">+ Créer une histoire</a>
+    <a href="{% url 'ajouterLivre' %}" class="btn-create"> Créer une histoire +</a>
 </div>
 {% endif %}
 {% endblock %}
