@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
             reader.onload = function (e) {
                 previewImage.src = e.target.result;
                 previewImage.style.display = "block";
-                previewImage.style.maxWidth = "100px"; // optionnel
-                previewImage.style.borderRadius = "8px"; // optionnel
+                previewImage.style.maxWidth = "100px"; 
+                previewImage.style.borderRadius = "8px"; 
             };
             reader.readAsDataURL(file);
         }

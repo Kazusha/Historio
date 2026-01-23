@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import RegisterForm , LoginForm , AjouterChapitre , AjouterLivre
 from django.contrib import messages 
 from django.contrib.auth import login
+from .models import Livre
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
@@ -9,9 +10,6 @@ from django.shortcuts import get_object_or_404
 
 def accueil(request):
     return render (request , "Accueil.html")
-
-def pageutilisateur(request):
-    return render(request,"page_utilisateur.html")
 
 def register_view(request):
     if request.method == 'POST':
@@ -33,6 +31,16 @@ def login_view(request):
         login(request, user)
         return redirect("page_utilisateur")
     return render(request, "login.html", {"form": form})
+
+@login_required(login_url="/login/")
+def pageutilisateur(request):
+    return render(request, "page_utilisateur.html")
+
+@login_required(login_url="/login/")
+def mes_livres(request):
+    livres = Livre.objects.filter(user=request.user)
+    return render(request , "mes_livres.html")
+
 @login_required(login_url="/login/")
 def ajouterLivre_view(request):
     if request.method == "POST":

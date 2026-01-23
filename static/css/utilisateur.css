@@ -2,7 +2,6 @@ body{
     margin: 0;
     background-color: #ffffff;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    overflow: hidden;
 }
 
 .layout {
@@ -19,6 +18,8 @@ body{
     height: 100vh;
     display: flex;
     flex-direction: column;
+    z-index: 50;
+    overflow: visible;
 }
 
 .center{
@@ -26,7 +27,6 @@ body{
     padding: 20px;
     border-left: 2px solid #F5F5DC;
     min-height: 100vh;
-    overflow-y: auto;
 }
 
 .debut{
@@ -52,7 +52,8 @@ body{
 .nav-item{
     position: relative;
     text-decoration: none;
-    display: flex;            
+    display: flex;      
+    pointer-events: auto; 
     align-items: center;
     gap: 10px;
     color: black;
@@ -72,13 +73,14 @@ body{
   border-radius: 6px;
   font-size: 14px;
   white-space: nowrap;
-
+  visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.2s ease;
 }
-.nav-item:hover::after{
+.nav-item:hover::after,.nav-item.active::after{
     opacity: 1;
+    visibility:visible;
 }
 .nav-item:hover {
     border-radius: 15px;
@@ -133,6 +135,7 @@ body{
     transition: background 0.2s;
     border-radius: 50px;
     background-color: #ffffff;
+    overflow: visible;
 
 }
 .profile::after{
@@ -188,16 +191,17 @@ background-color: #ffffff;
 .historio:hover{
 color: #7248cd;
 }
-.main-center{
-    position: fixed;
-    top: 0;
-    width: 90%;
-    min-height: 70px;
+.top-bar {
+    width: 100%;
     border-bottom: 2px solid #F5F5DC;
-    background: white;
+    align-items: center;
+    background-color: white;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .search-form {
+top: 0;
   display: flex; 
   align-items: center; 
   border: 1px solid #ccc;
@@ -206,6 +210,7 @@ color: #7248cd;
   max-width: 90%; 
   margin: 20px auto; 
   background-color: #ffffff;
+
 }
 .search-form:hover{
     background-color: #f9f9f9;
