@@ -42,15 +42,15 @@ def mes_livres(request):
     return render(request , "mes_livres.html")
 
 @login_required(login_url="/login/")
-def ajouterLivre_view(request):
+def ajouterLivre(request):
     if request.method == "POST":
          form = AjouterLivre(request.POST, request.FILES)
          if form.is_valid():
            form.save()
-           return redirect("livre_view")
+           return redirect("mes_livres")
     else:
          form =AjouterLivre()
-    return render(request,"livre_view.html",{"form":form})
+    return render(request,"ajouterLivre.html",{"form":form})
 
 @login_required(login_url="/login/")
 def ajouterchap_view(request , livre_id):
