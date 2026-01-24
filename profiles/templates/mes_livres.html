@@ -7,12 +7,14 @@
     <h2>Vos Histoires</h2>
 </div>
 
+
 {% if livres %}
+<a href="{% url 'ajouterLivre' %}" class="btn-creat">Créer une histoire </a>
 <div class="livre-grid">
     {% for livre in livres %}
     <div class="livre-card">
-        <img src="{{ livre.couverture.url }}" alt="{{ livre.titre }}">
-        <h3>{{ livre.titre }}</h3>
+        <img src="{{ livre.couverture.url }}" alt="{{ livre.titre }}" class="imagecouv">
+        <a>{{ livre.titre }}</a>
     </div>
     {% endfor %}
 </div>
@@ -20,7 +22,7 @@
 <div class="empty-state">
     <img src="{% static 'images/livremagic.png' %}" alt="ajouter" class="empty-icon">
     <h2>Bonjour, {{ request.user.username }} tu n'as encore créé aucune histoire :(</h2>
-    <a href="{% url 'ajouterLivre' %}" class="btn-create"> Créer une histoire +</a>
+    <a href="{% url 'ajouterLivre' %}" class="btn-create"> Créer une histoire </a>
 </div>
 {% endif %}
 {% endblock %}

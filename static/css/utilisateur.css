@@ -262,31 +262,29 @@ display: flex;
     background: #5c2fbc;
 }
 .histoires{
+    margin-top: 5px;
     display: inline-block;
     border-bottom: 4px solid black;
     cursor: pointer;
 }
-.histoires h2{
-    margin-top: 50pxpx;
 
-}
 .histoires:hover{
     border-bottom: 4px solid #7248cd;
     cursor: pointer;
 }
-.titreadd h1 {
-    width: 17%;
+.titreadd h2 {
+    display: inline-block;
     border-bottom: 4px solid black;
     cursor: pointer;
 }
-.titreadd:hover h1{
+.titreadd:hover h2{
     border-bottom: 4px solid #7248cd;
 }
 .formulaire{
     background: #fff;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    width: 80%;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    width: 50%;
     height: 50%;
     margin: 40px auto;
 }
@@ -334,7 +332,7 @@ input[type="file"] {
 }
 .formulaire form{
     display: flex;
-    gap: 40px;
+    gap: 30px;
     align-self: flex-start;
 }
 .grandgroupe{
@@ -342,7 +340,7 @@ input[type="file"] {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    gap: 20px;
+    gap: 10px;
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
@@ -369,6 +367,7 @@ input[type="file"] {
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 10px;
+    font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 100%;
 }
@@ -376,12 +375,13 @@ input[type="file"] {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    font-size: 16px;
     margin-bottom: 10px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     width: 100%;
 }
 .boutton{
-     width: 100%;
+    width: 100%;
     padding: 14px;
     font-size: 17px;
     font-weight: 600;
@@ -396,4 +396,47 @@ input[type="file"] {
 .boutton:hover{
            background-color: #3e0aaf;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+.livre-grid{
+    margin-top: 30px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.livre-card {
+    margin-left: 10px;
+    padding: 20px;
+    display: flex;
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
+    width: 60%;
+    height: 40%;
+    gap: 20px;
+
+}
+.livre-card a{
+    font-size: 20px;
+    cursor: pointer;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.livre-card .imagecouv {
+    width: 100px;
+    height: 150px;
+    object-fit: cover; 
+    border-radius: 5px;
+}
+
+.btn-creat{
+    float: right;
+    display: block;
+    margin-top: 30px;
+    padding: 12px 24px;
+    background:#7248cd;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+}
+.btn-creat:hover{
+    background: #3e0aaf;
 }

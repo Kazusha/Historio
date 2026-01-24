@@ -12,7 +12,7 @@ class User(AbstractUser):
     
 class Livre(models.Model):
     user = models.ForeignKey(User , on_delete=models.CASCADE)
-    titre = models.CharField(unique=False, max_length=30)
+    titre = models.CharField(unique=False, max_length=100)
     couverture = models.ImageField(upload_to="couverture/",blank=True,null=True)
     description=models.CharField(max_length=1000)
     def __str__(self):
