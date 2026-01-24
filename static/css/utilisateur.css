@@ -274,3 +274,126 @@ display: flex;
     border-bottom: 4px solid #7248cd;
     cursor: pointer;
 }
+.titreadd h1 {
+    width: 17%;
+    border-bottom: 4px solid black;
+    cursor: pointer;
+}
+.titreadd:hover h1{
+    border-bottom: 4px solid #7248cd;
+}
+.formulaire{
+    background: #fff;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 80%;
+    height: 50%;
+    margin: 40px auto;
+}
+.couverture {
+    flex-shrink: 0;
+    width: 180px;
+    height: 300px;         
+}
+
+.cover-upload {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: #f3f3f3;
+    box-shadow:
+        inset 0 4px 10px rgba(0,0,0,0.25),
+        inset 0 -4px 10px rgba(255,255,255,0.6);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+.cover-upload img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.cover-upload img[src*="plus"] {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    opacity: 0.5;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+.formulaire form{
+    display: flex;
+    gap: 40px;
+    align-self: flex-start;
+}
+.grandgroupe{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    font-size: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+}
+.group {
+    display: contents;
+    flex-direction: column; 
+}
+
+.group label {
+    border-bottom: 4px solid black;
+    font-size: 20px;
+   cursor: pointer;
+}
+.group label:hover{
+    cursor: pointer;
+    border-bottom: 4px solid #7248cd;
+}
+
+.input-field{
+     width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+}
+.textarea-field{
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%;
+}
+.boutton{
+     width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #7248cd;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: Cambria, Georgia, Times, serif;
+    transition: all 0.3s ease;
+}
+.boutton:hover{
+           background-color: #3e0aaf;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}

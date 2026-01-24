@@ -12,5 +12,8 @@
     }
 }
     ],
-    "jupyter.allowUnauthorizedRemoteConnection": true
+    "jupyter.allowUnauthorizedRemoteConnection": true,
+    "vscode-pets.petSize": "nano",
+    "vscode-pets.theme": "castle",
+    "vscode-pets.throwBallWithMouse": true
 }

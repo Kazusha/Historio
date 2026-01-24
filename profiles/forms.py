@@ -50,6 +50,17 @@ class AjouterLivre(forms.ModelForm):
     class Meta:
             model = Livre
             fields = ['titre' , 'couverture' , 'description']
+            widgets = {
+            'description': forms.Textarea(attrs={
+                'rows': 6,
+                'class': 'textarea-field',
+                'placeholder': 'Description du livre'
+            }),
+            'titre': forms.TextInput(attrs={
+                'class': 'input-field',
+                'placeholder': 'Titre du livre'
+            }),
+        }
 
 class AjouterChapitre(forms.ModelForm):
     contenu = forms.CharField(widget=CKEditorWidget)

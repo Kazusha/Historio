@@ -39,14 +39,16 @@ def pageutilisateur(request):
 @login_required(login_url="/login/")
 def mes_livres(request):
     livres = Livre.objects.filter(user=request.user)
-    return render(request , "mes_livres.html")
+    return render(request , "mes_livres.html" ,{"livres":livres})
 
 @login_required(login_url="/login/")
 def ajouterLivre(request):
     if request.method == "POST":
          form = AjouterLivre(request.POST, request.FILES)
          if form.is_valid():
-           form.save()
+           livre= form.save(commit=False)
+           livre.user = request.user
+           livre.save()
            return redirect("mes_livres")
     else:
          form =AjouterLivre()
