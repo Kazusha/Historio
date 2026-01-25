@@ -406,6 +406,7 @@ input[type="file"] {
 }
 .livre-card {
     margin-left: 10px;
+    position: relative;
     padding: 20px;
     display: flex;
     box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.15);
@@ -413,6 +414,12 @@ input[type="file"] {
     height: 40%;
     gap: 20px;
 
+}
+.livre-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
 }
 .livre-card a{
     font-size: 20px;
@@ -442,27 +449,24 @@ input[type="file"] {
 }
 .info{
     display: flex;
-    gap: 20px;
-    justify-content: flex-start;
-    margin-top: 20px;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 .info-item{
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px;
     font-size: 14px;
     color: #5c2fbc;
 }
 .info-item img{
-    width: 30px;
-    height: 30px;
+    width: 15px;
+    height: 15px;
     cursor: pointer;
 }
-.info-item:hover{
-    color: #7248cd;
-    transform: scale(1.05);
-}
+
 .info-item span{
     font-size: 14px;
     font-weight: 600;
@@ -516,16 +520,60 @@ input[type="file"] {
     border-radius: 6px;
     cursor: pointer;
 }
-.btn-supprimer{
-    width: 100%;
-    padding: 14px;
-    font-size: 17px;
+.btn-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    gap: 10px; 
+}
+
+.btn-modifier,
+.btn-supprimer {
+    padding: 10px 20px;
+    font-size: 16px;
     font-weight: 600;
-    background-color: #7248cd;
-    color: #FFF9EF;
-    border: none;
-    border-radius: 8px;
     cursor: pointer;
-    font-family: Cambria, Georgia, Times, serif;
     transition: all 0.3s ease;
+}
+
+.btn-modifier {
+    background-color: #7248cd;
+    color: #f3f3f3 !important;
+    border: none;
+}
+.btn-modifier:hover {
+    background: #3e0aaf;
+}
+
+.btn-supprimer {
+    background-color: #cdcdcd;
+    color: black;
+    border: none;
+}
+.btn-supprimer:hover {
+    background: #999;
+}
+.classe-continuer {
+    width: 40%;      
+    height: 20%;  
+    right: 10px;  
+}
+
+.continuer {
+    display: block;       
+    width: 100%;          
+    padding: 15px 0;      
+    font-size: 18px;      
+    font-weight: 700;
+    text-align: center;
+    background-color: #000;
+    color: #f3f3f3 !important;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.continuer:hover {
+    background-color: #333;
 }

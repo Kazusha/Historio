@@ -32,12 +32,16 @@
                     <img src="{% static 'images/save (2).png' %}" alt="Saves">
                     <span>{{ livre.saves.count }}</span>
                 </div>
-                <button class="btn-supprimer" 
-                        onclick="openModal({{ livre.id }}, '{{ livre.titre|escapejs }}', '{{ livre.couverture.url }}', '{{ request.user.username|escapejs }}')">
-                    Supprimer
-                </button>
-            </div>
-        </div>
+                <div class="classe-continuer">
+        <a href="#chapitre" class="continuer">Continuer à écrire</a>
+    </div>
+    <div class="btn-container">
+        <a href="#modifier" class="btn-modifier">Modifier</a>
+        <button class="btn-supprimer"
+                onclick="openModal({{ livre.id }}, '{{ livre.titre|escapejs }}', '{{ livre.couverture.url }}', '{{ request.user.username|escapejs }}')">
+            Supprimer
+        </button>
+    </div>
     </div>
     {% endfor %}
 </div>
