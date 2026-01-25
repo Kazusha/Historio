@@ -7,22 +7,161 @@
     <h2>Vos Histoires</h2>
 </div>
 
-
 {% if livres %}
-<a href="{% url 'ajouterLivre' %}" class="btn-creat">Créer une histoire </a>
+<a href="{% url 'ajouterLivre' %}" class="btn-creat">Créer une histoire</a>
 <div class="livre-grid">
     {% for livre in livres %}
     <div class="livre-card">
-        <img src="{{ livre.couverture.url }}" alt="{{ livre.titre }}" class="imagecouv">
-        <a>{{ livre.titre }}</a>
+        <img src="{{ livre.couverture.url }}" class="imagecouv">
+
+        <div class="livre-content">
+            <a class="titre-livre" href="{% url 'detail_livre' livre.id %}">
+                {{ livre.titre }}
+            </a>
+
+            <div class="info">
+                <div class="info-item">
+                    <img src="{% static 'images/oeil.png' %}" alt="Vues">
+                    <span>{{ livre.vues }}</span>
+                </div>
+                <div class="info-item">
+                    <img src="{% static 'images/pouce.png' %}" alt="Likes">
+                    <span>{{ livre.likes.count }}</span>
+                </div>
+                <div class="info-item">
+                    <img src="{% static 'images/save (2).png' %}" alt="Saves">
+                    <span>{{ livre.saves.count }}</span>
+                </div>
+                <button class="btn-supprimer" 
+                        onclick="openModal({{ livre.id }}, '{{ livre.titre|escapejs }}', '{{ livre.couverture.url }}', '{{ request.user.username|escapejs }}')">
+                    Supprimer
+                </button>
+            </div>
+        </div>
     </div>
     {% endfor %}
 </div>
+
 {% else %}
 <div class="empty-state">
     <img src="{% static 'images/livremagic.png' %}" alt="ajouter" class="empty-icon">
     <h2>Bonjour, {{ request.user.username }} tu n'as encore créé aucune histoire :(</h2>
-    <a href="{% url 'ajouterLivre' %}" class="btn-create"> Créer une histoire </a>
+    <a href="{% url 'ajouterLivre' %}" class="btn-create">Créer une histoire</a>
 </div>
 {% endif %}
+
+<div id="modal-confirm" class="modal" style="
+    display:none;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(0,0,0,0.5);
+    justify-content:center; align-items:center;
+    z-index:1000;
+">
+    <div class="modal-content" style="
+        display:flex;
+        background:white;
+        border-radius:12px;
+        max-width:720px;
+        width:90%;
+        overflow:hidden;
+        box-shadow:0 8px 25px rgba(0,0,0,0.35);
+    ">
+
+        <img id="modal-couverture" src="" alt="Couverture" style="
+            width:180px;
+            height:300px;
+            object-fit:cover;
+            border-radius:10px;
+            margin:20px;
+        ">
+
+
+        <div style="padding:20px; flex:1; display:flex; flex-direction:column; justify-content:space-between;">
+            <div>
+                <h3 id="modal-title" style="
+                    font-size:22px;
+                    font-weight:bold;
+                    margin-bottom:12px;
+                    color:#333;
+                ">Supprimer ce livre ?</h3>
+                <p id="modal-user" style="
+                    margin-bottom:15px;
+                    font-weight:500;
+                    color:#555;
+                    line-height:1.5;
+                "></p>
+                <ul style="
+                    color:#555;
+                    margin-left:20px;
+                    margin-bottom:20px;
+                    line-height:1.6;
+                ">
+                    <li>Le livre sera définitivement supprimé.</li>
+                    <li>Vous perdrez toutes les vues et likes associés.</li>
+                    <li>Les utilisateurs ne pourront plus accéder à ce livre.</li>
+                    <li>Cette action est irréversible.</li>
+                </ul>
+            </div>
+
+            <div style="display:flex; gap:12px; justify-content:flex-end;">
+                <form id="modal-form" method="POST" style="margin:0;">
+                    {% csrf_token %}
+                    <button type="submit" style="
+                        padding:10px 25px;
+                        background:#7248cd;
+                        color:white;
+                        border:none;
+                        border-radius:6px;
+                        cursor:pointer;
+                        font-weight:600;
+                        transition:all 0.2s;
+                    " onmouseover=onmouseout="this.style.background='#e0e0e0'">
+                        Oui, supprimer
+                    </button>
+                </form>
+                <button type="button" onclick="closeModal()" style="
+                    padding:10px 25px;
+                    background:#f0f0f0;
+                    color:#333;
+                    border:none;
+                    border-radius:6px;
+                    cursor:pointer;
+                    font-weight:600;
+                    transition:all 0.2s;
+                " onmouseover="this.style.background='#e0e0e0'" onmouseout="this.style.background='#f0f0f0'">
+                    Annuler
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function openModal(livreId, titre, couvertureUrl, username) {
+    const modal = document.getElementById("modal-confirm");
+    const title = document.getElementById("modal-title");
+    const img = document.getElementById("modal-couverture");
+    const user = document.getElementById("modal-user");
+    const form = document.getElementById("modal-form");
+
+    title.textContent = `Voulez-vous vraiment supprimer "${titre}" ?`;
+    img.src = couvertureUrl;
+    user.textContent = `${username} souhaite tu vraiment supprimer ce livre ? Conséquences :`;
+    form.action = `/livre/${livreId}/supprimer/`;
+
+    modal.style.display = "flex";
+}
+
+function closeModal() {
+    document.getElementById("modal-confirm").style.display = "none";
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById("modal-confirm");
+    if (event.target === modal) closeModal();
+}
+</script>
+
 {% endblock %}

@@ -15,6 +15,22 @@ class Livre(models.Model):
     titre = models.CharField(unique=False, max_length=100)
     couverture = models.ImageField(upload_to="couverture/",blank=True,null=True)
     description=models.CharField(max_length=1000)
+    vues = models.PositiveIntegerField(default=0)
+    lires= models.ManyToManyField(
+        User,
+        related_name='livres_lires',
+        blank=True
+    )    
+    likes= models.ManyToManyField(
+        User,
+        related_name='livres_likes',
+        blank=True
+    )
+    saves= models.ManyToManyField(
+        User,
+        related_name='livres_saves',
+        blank=True
+    )
     def __str__(self):
         return self.titre
 
