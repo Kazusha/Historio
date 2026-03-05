@@ -14,4 +14,6 @@ For the moment I've done:
 
 - Login (same as register)
 
+- CRUD for books you can add a book , delete a book , update a book and read details 
+
 Sorry if I'm slow, it's my first web app and I'm a complete beginner and I'm still learning in college / Désolé si je suis lent, c'est ma première app web et je suis un débutant complet et j'apprends toujours à l'école
