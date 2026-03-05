@@ -1,85 +1,138 @@
-header{
-    display : flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 10px;
-    background-color: #FFF9EF;
-}
-body{
-    background-color: #FFF9EF;
+/* =====================
+   BASE STYLES
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.debut{
+body {
+    background-color: #f4f4f8;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #222;
+}
+
+/* =====================
+   HEADER
+===================== */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 2px;
+    background-color: white;
+    padding: 20px 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.debut {
     display: flex;
     align-items: center;
     gap: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 40px;
-    border-left: 4px solid blueviolet;
-  padding-left: 15px;
-  margin-left: 0;
-}
-.titre{
-    color: #7248cd;
-    transition: background-color 0.3 ease;
-
-}
-.logo:hover{
-    transition: rotate(2deg);
-}
-.titre:hover{
-    color: blueviolet;
-}
-.boutonins{
-    background-color: #7248cd;
-    color: #FFF9EF;
-    border-radius: 10px;
-    font-size: 16px;
-    width: 120px;
-    height: 40px;
-    cursor: pointer;
-    transition: background-color 0.3 ease;
+    border-left: 4px solid #7248cd;
+    padding-left: 15px;
 }
 
-.boutoncon{
-    background-color: #FFF9EF;
+.titre {
     color: #7248cd;
-    border-radius: 10px;
-    font-size: 16px;
-    width: 120px;
-    height: 40px;
-    cursor: pointer;
-    transition: background-color 0.3 ease;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
 
+.titre:hover {
+    color: #3e0aaf;
 }
-.boutoncon:hover{
-    background-color: #FFF9EF;
-    color: #7248cd;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+.logo {
+    transition: transform 0.3s ease;
 }
-.boutonins:hover{
-    background-color: #7248cd;
-    color: #FFF9EF;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-.livre{
-display: flex;
-justify-content: center;
-align-items: flex-end;
-min-height: 50vh;
-}
-.livreim{
-    width: 200px;
-    height: auto;
-}
-.livreim:hover{
-    border-radius: 15px;
+
+.logo:hover {
     transform: rotate(2deg);
 }
-.description{
+
+/* =====================
+   BUTTONS
+===================== */
+.boutonins,
+.boutoncon {
+    border-radius: 2px;
+    font-size: 16px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.boutonins {
+    background-color: #7248cd;
+    color: white;
+}
+
+.boutonins:hover {
+    background-color: #3e0aaf;
+    box-shadow: 0 4px 8px rgba(114,72,205,0.3);
+}
+
+.boutoncon {
+    background-color: white;
+    color: #7248cd;
+    border: 2px solid #7248cd;
+}
+
+.boutoncon:hover {
+    background-color: #f0eaff;
+    box-shadow: 0 4px 8px rgba(114,72,205,0.2);
+}
+
+/* =====================
+   BOOK SECTION
+===================== */
+.livre {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 50vh;
+    padding: 30px;
+}
+
+.livreim {
+    width: 200px;
+    height: auto;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.livreim:hover {
+    border-radius: 2px;
+    transform: rotate(2deg) scale(1.05);
+}
+
+/* =====================
+   DESCRIPTION
+===================== */
+.description {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 30px;
     font-size: 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #555;
+    text-align: center;
+    background: white;
+    margin: 20px;
+    border-radius: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.description a {
+    color: #7248cd;
+    text-decoration: none;
+    font-weight: 600;
 }

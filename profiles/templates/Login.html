@@ -22,14 +22,28 @@
 
             <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="form-group error-box">
+                        {% for error in form.non_field_errors %}
+                            <p class="error-message">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
                 <div class="form-group">
-                    <label for="{{ form.username.id_for_label }}">Email</label>
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
                     {{ form.email|add_class:"input-field"|attr:"placeholder:votre@email.com" }}
+                    {% if form.email.errors %}
+                        <span class="error-message">{{ form.email.errors.0 }}</span>
+                    {% endif %}
                 </div>
 
                 <div class="form-group">
-                    <label for="{{ form.password.id_for_label }}">Mot de passe</label>
+                    <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
                     {{ form.password|add_class:"input-field"|attr:"placeholder:••••••••" }}
+                    {% if form.password.errors %}
+                        <span class="error-message">{{ form.password.errors.0 }}</span>
+                    {% endif %}
                 </div>
 
                 <button type="submit" class="submit">Se connecter</button>

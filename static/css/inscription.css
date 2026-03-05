@@ -1,11 +1,25 @@
-body{
-    background-color: #FFF9EF;
+/* =====================
+   BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f4f4f8;
     display: grid;
     place-items: center;
     min-height: 100vh;
+    padding: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.box_Inscription{
+/* =====================
+   INSCRIPTION CONTAINER
+===================== */
+.box_Inscription {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,107 +27,231 @@ body{
     width: 850px;
     height: auto;
     border: 3px solid #7248cd;
-    border-radius: 10px;
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     overflow: hidden;
-
+    background: white;
 }
-.compte{
-    color:#7248cd ;
+
+.compte {
+    color: #7248cd;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 30px;
+    font-weight: 600;
 }
-.container{
-    display:flex;
+
+.container {
+    display: flex;
     align-items: flex-start;
-    gap:20px
-}
-.img2{
-    width: 300px;
-    height: auto;
-    transition: transform 0.3 ease;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
-
-}
-.img2:hover{
-    transform: rotate(3deg) scale(1.05);
-}
-.input-field {
-    width: 400px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-
+    gap: 20px;
+    width: 100%;
 }
 
-.submit{
-       width: 100%;
-    padding: 14px;
-    font-size: 17px;
-    font-weight: 600;
-    background-color: #7248cd;
-    color: #FFF9EF;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: Cambria, Georgia, Times, serif;
-    transition: all 0.3s ease;
-}
-.submit:hover{
-        background-color: #3e0aaf;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-
-}
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.form-group{
-    display: flex;
-    flex-direction: column;
-}
-.file{
-     width: 100%;
-    padding: 14px;
-    font-size: 17px;
-    font-weight: 600;
-    background-color: #7248cd;
-    color: #FFF9EF;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-family: Cambria, Georgia, Times, serif;
-    transition: all 0.3s ease;
-
-}
-.file:hover{
-    background-color: #3e0aaf;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-.imgback{
+/* =====================
+   IMAGE SECTION
+===================== */
+.imgback {
     flex: 0 0 350px;
     background: linear-gradient(135deg, #e8dff5 0%, #f5f0ff 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     height: 600px;
+    padding: 30px;
 }
+
+.img2 {
+    width: 300px;
+    height: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+.img2:hover {
+    transform: rotate(3deg) scale(1.05);
+}
+
+/* =====================
+   FORM
+===================== */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
+    padding: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label,
+.form-group a {
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* =====================
+   INPUT FIELDS
+===================== */
+.input-field {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 1px;
+    border: 2px solid #e0e0e0;
+    font-size: 15px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #7248cd;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(114, 72, 205, 0.1);
+}
+
+.input-field:hover {
+    border-color: #9b7dd4;
+}
+
+/* =====================
+   FILE UPLOAD
+===================== */
 .file-preview {
-    display: flex;          
-    align-items: center;    
-    gap: 15px;              
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .file-preview .preview img {
-    max-width: 100px;       
-    border: 2px solid #ccc;
-    border-radius: 8px;
+    max-width: 100px;
+    border: 2px solid #e0e0e0;
+    border-radius: 2px;
 }
 
-.espace{
+.file {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    background-color: #7248cd;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Cambria, Georgia, Times, serif;
+    transition: all 0.3s ease;
+}
+
+.file:hover {
+    background-color: #3e0aaf;
+    box-shadow: 0px 4px 8px rgba(114, 72, 205, 0.3);
+    transform: translateY(-2px);
+}
+
+/* =====================
+   SUBMIT BUTTON
+===================== */
+.submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #7248cd;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Cambria, Georgia, Times, serif;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #3e0aaf;
+    box-shadow: 0px 4px 8px rgba(114, 72, 205, 0.3);
+    transform: translateY(-2px);
+}
+
+.submit:active {
+    transform: translateY(0);
+}
+
+/* =====================
+   SPACING
+===================== */
+.espace {
     height: 10px;
+}
+
+.blu {
+    display: none;
+}
+
+/* =====================
+   ERROR MESSAGES
+===================== */
+.error-box {
+    background: #ffebee;
+    border: 2px solid #d32f2f;
+    border-radius: 2px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    display: block;
+    color: #d32f2f;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+    .box_Inscription {
+        width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .imgback {
+        flex: 0 0 auto;
+        width: 100%;
+        height: auto;
+        min-height: 300px;
+    }
+
+    form {
+        padding: 20px;
+        flex: 1;
+        width: 100%;
+    }
+
+    .input-field {
+        width: 100%;
+    }
+
+    .compte {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    button,
+    .file,
+    .submit {
+        min-height: 44px;
+    }
 }

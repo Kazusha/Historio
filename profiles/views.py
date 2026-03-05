@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect 
-from .forms import RegisterForm , LoginForm , AjouterChapitre , AjouterLivre
+from .forms import RegisterForm , LoginForm , AjouterChapitre , AjouterLivre , ModifierLivre
 from django.contrib import messages 
 from django.contrib.auth import login
 from .models import Livre
@@ -34,7 +34,12 @@ def login_view(request):
 
 @login_required(login_url="/login/")
 def pageutilisateur(request):
-    return render(request, "page_utilisateur.html")
+    return render(request, "page_utilisateur.html" )
+
+@login_required(login_url="/login")
+def home(request):
+    livres = Livre.objects.select_related('user').all().order_by('-id')
+    return render(request , "home.html" , {"livres":livres})
 
 @login_required(login_url="/login/")
 def mes_livres(request):
@@ -59,8 +64,7 @@ def supprimerLivre(request , id):
     if request.method == "POST":
         if livre.user == request.user:
             livre.delete()
-            livres=Livre.objects.filter(user=request.user)
-            return render(request , "mes_livres.html" ,{"livres":livres})
+            return redirect("mes_livres")
         
 @login_required(login_url="/login/")
 def detail_livre(request, id):
@@ -86,7 +90,7 @@ def saves(request,id):
     if request.user in livre.saves.all():
         livre.saves.remove(request.user)
     else:
-        livre.savess.add(request.user)
+        livre.saves.add(request.user)
     return redirect('detail_livre',id=livre.id)    
     
 @login_required(login_url="/login/")
@@ -102,6 +106,26 @@ def ajouterchap_view(request , livre_id):
     else:
         form=AjouterChapitre() 
     return render(request , "livre_view_parlivre.html" , {"form":form , "livre":livre})
+
+@login_required(login_url="/login/")
+def modifier_livre(request, id):
+    livre = get_object_or_404(Livre, id=id)
+    
+    # Vérifier que l'utilisateur est le propriétaire du livre
+    if livre.user != request.user:
+        messages.error(request, "❌ Tu ne peux pas modifier ce livre !")
+        return redirect("mes_livres")
+    
+    if request.method == "POST":
+        form = ModifierLivre(request.POST, request.FILES, instance=livre)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "✅ Ton histoire a été mise à jour avec succès !")
+            return redirect("mes_livres")
+    else:
+        form = ModifierLivre(instance=livre)
+    
+    return render(request, "modifier.html", {"form": form, "livre": livre})
 
 
 @login_required(login_url='/login/')

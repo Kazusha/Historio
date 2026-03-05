@@ -18,47 +18,61 @@
             </div>
               <form method="POST" enctype="multipart/form-data">
                 {% csrf_token %}
+                {% if form.non_field_errors %}
+                    <div class="form-group error-box">
+                        {% for error in form.non_field_errors %}
+                            <p class="error-message">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
                 <div class="form-group">
-                      <h1 class="compte">Creez Votre Compte Historio</h1>
-                      <a class="pseudo"> Pseudo:</a>
-                {{ form.username|add_class:"input-field"|attr:"placeholder:VotrePseudo"}}
+                      <h1 class="compte">Créez votre compte Historio</h1>
+                      <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                      {{ form.username|add_class:"input-field" }}
+                      {% if form.username.errors %}
+                        <span class="error-message">{{ form.username.errors.0 }}</span>
+                      {% endif %}
                 </div>
 
                 <div class="form-group">
-                <a class="email">Email</a>
-                {{form.email| add_class:"input-field"|attr:"placeholder:votreemail@gmail.com"}}
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email|add_class:"input-field" }}
+                    {% if form.email.errors %}
+                        <span class="error-message">{{ form.email.errors.0 }}</span>
+                    {% endif %}
                 </div>
                 
-                 <div class="form-group">
-                <a class="mdp"> Mot de Passe:</a>
-                {{form.password1 | add_class:"input-field"|attr:"placeholder:******"}}
-                </div>
-
-                 <div class="form-group">
-                <a class="mdp"> Confirmer le mode de passe</a>
-                {{form.password2 | add_class:"input-field"|attr:"placeholder:*******"}}
-                </div>
                 <div class="form-group">
-    <label>Sélectionner une photo de profil</label>
-    <div class="espace"> </div>
+                    <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                    {{ form.password1|add_class:"input-field" }}
+                    {% if form.password1.errors %}
+                        <span class="error-message">{{ form.password1.errors.0 }}</span>
+                    {% endif %}
+                </div>
 
-<div class="file-preview">
-   <input type="file" name="photo_user" id="photoInput" hidden>
-    <button type="button" class="file"
-            onclick="document.getElementById('photoInput').click()">
-        Choisir une photo
-    </button>
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                    {{ form.password2|add_class:"input-field" }}
+                    {% if form.password2.errors %}
+                        <span class="error-message">{{ form.password2.errors.0 }}</span>
+                    {% endif %}
+                </div>
 
-    <div class="preview">
-        <img id="previewImage">
-    </div>
-</div>
-</div>
- <div class="blu">     </div>
-
-                 
-
-         
+                <div class="form-group">
+                    <label>{{ form.photo_user.label }}</label>
+                    <div class="espace"></div>
+                    <div class="file-preview">
+                        <input type="file" name="photo_user" id="photoInput" hidden>
+                        <button type="button" class="file"
+                                onclick="document.getElementById('photoInput').click()">
+                            Choisir une photo
+                        </button>
+                        <div class="preview">
+                            <img id="previewImage">
+                        </div>
+                    </div>
+                </div>
 
                 <button type="submit" class="submit">S'inscrire</button>
               </form>

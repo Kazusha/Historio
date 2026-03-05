@@ -1,17 +1,17 @@
 FR:
-Historio est une platforme Web permettant a ses utilisateurs d'etre eux meme ecrivains et lecteurs 
+Historio est une plateforme Web permettant à ses utilisateurs d'être eux-même écrivains et lecteurs
 
-Historio est toujours en devellopement et la premiere version stable ne devrait pas sortir avant au moins Avril 2026
+Historio est toujours en développement et la première version stable ne devrait pas sortir avant au moins Avril 2026
 
 EN:
-Historio is a web platform , it permit to user to be writter and readers 
+Historio is a web platform that allows users to be both writers and readers
 
-Historio is always under devellopement and the first stable version will not coming before April 2026
+Historio is still under development and the first stable version should not be released before April 2026
 
-For the moment i juste have done:
+For the moment I've done:
 
--Register (and i want to make it responsive ) and use google service and facebook service
+- Register (and I want to make it responsive) and integrate Google service and Facebook service support
 
--Login (same as register)
+- Login (same as register)
 
-Desole si je suis lent c'est ma premiere app web je suis full debutant et je suis toujours en apprenissage  en ecole / Sorry if i am slow it my first web  app and i am a beginner and i always follow a curse in college
+Sorry if I'm slow, it's my first web app and I'm a complete beginner and I'm still learning in college / Désolé si je suis lent, c'est ma première app web et je suis un débutant complet et j'apprends toujours à l'école

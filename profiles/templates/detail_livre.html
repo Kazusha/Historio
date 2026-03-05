@@ -1,0 +1,236 @@
+{% extends "page_utilisateur.html" %}
+{% load static %}
+
+{% block content %}
+<div class="livre-detail">
+    <div class="livre-header">
+        {% if livre.couverture %}
+            <img src="{{ livre.couverture.url }}" alt="{{ livre.titre }}" class="detail-couverture">
+        {% else %}
+            <img src="{% static 'images/livremagic.png' %}" alt="Couverture par défaut" class="detail-couverture">
+        {% endif %}
+
+        <div class="livre-info">
+            <h1>{{ livre.titre }}</h1>
+            <p class="auteur">Par {{ livre.user.username }}</p>
+            <p class="description">{{ livre.description }}</p>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <img src="{% static 'images/oeil(1).png' %}" alt="vues">
+                    <span>{{ livre.vues }} vues</span>
+                </div>
+                <div class="stat-item">
+                    <img src="{% static 'images/coeur.svg' %}" alt="likes">
+                    <span>{{ livre.likes.count }} likes</span>
+                </div>
+                <div class="stat-item">
+                    <img src="{% static 'images/saveme.png' %}" alt="saves">
+                    <span>{{ livre.saves.count }} saves</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <a href="{% url 'likes' livre.id %}" class="btn-action {% if request.user in livre.likes.all %}liked{% endif %}">
+                    {% if request.user in livre.likes.all %}
+                        ❤️ Aimé
+                    {% else %}
+                        🤍 Aimer
+                    {% endif %}
+                </a>
+                <a href="{% url 'saves' livre.id %}" class="btn-action {% if request.user in livre.saves.all %}saved{% endif %}">
+                    {% if request.user in livre.saves.all %}
+                        📚 Sauvegardé
+                    {% else %}
+                        🔖 Sauvegarder
+                    {% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="chapitres">
+        <h2>Chapitres</h2>
+        {% if livre.chapitres.exists %}
+            <div class="chapitres-list">
+                {% for chapitre in livre.chapitres.all %}
+                <div class="chapitre-item">
+                    <h3>Chapitre {{ chapitre.numero_chap }}: {{ chapitre.titre_chap }}</h3>
+                    <div class="chapitre-contenu">{{ chapitre.contenu|safe }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-chapitres">Aucun chapitre n'a encore été écrit pour ce livre.</p>
+        {% endif %}
+
+        {% if livre.user == request.user %}
+            <a href="{% url 'ajouter_chapitre' livre.id %}" class="btn-create">+ Ajouter un chapitre</a>
+        {% endif %}
+    </div>
+</div>
+
+<style>
+.livre-detail {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.livre-header {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+}
+
+.detail-couverture {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.livre-info h1 {
+    font-size: 28px;
+    color: #222;
+    margin-bottom: 8px;
+}
+
+.auteur {
+    color: #7248cd;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.description {
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #666;
+}
+
+.stat-item img {
+    width: 20px;
+    height: 20px;
+}
+
+.actions {
+    display: flex;
+    gap: 12px;
+}
+
+.btn-action {
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.btn-action:not(.liked):not(.saved) {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-action:not(.liked):not(.saved):hover {
+    background: #ddd;
+}
+
+.btn-action.liked, .btn-action.saved {
+    background: #7248cd;
+    color: white;
+}
+
+.chapitres h2 {
+    font-size: 24px;
+    color: #222;
+    margin-bottom: 20px;
+    border-left: 4px solid #7248cd;
+    padding-left: 12px;
+}
+
+.chapitres-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.chapitre-item {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.chapitre-item h3 {
+    color: #7248cd;
+    margin-bottom: 12px;
+}
+
+.chapitre-contenu {
+    line-height: 1.7;
+    color: #333;
+}
+
+.no-chapitres {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 40px;
+    background: white;
+    border-radius: 8px;
+}
+
+.btn-create {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #7248cd;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: background 0.2s;
+}
+
+.btn-create:hover {
+    background: #3e0aaf;
+}
+
+@media (max-width: 768px) {
+    .livre-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .detail-couverture {
+        width: 150px;
+        height: 225px;
+    }
+
+    .stats {
+        justify-content: center;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+}
+</style>
+{% endblock %}

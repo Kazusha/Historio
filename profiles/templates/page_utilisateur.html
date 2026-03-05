@@ -1,56 +1,63 @@
 {% load static %}
 {% load widget_tweaks %}
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Historio</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="{% static 'css/utilisateur.css' %}">
-        <link rel="icon" type="image\png" sizes="16x16" href="{% static 'images/livreicon.png' %}">
-        <link rel="icon" type="image\png" sizes="32x32" href="{% static 'images/livreicon.png' %}">
-    </head>    
-    <body>
-        <div class="layout">
-            <aside class="left">
-                <a href="{% url 'page_utilisateur' %}" class="historio" data-tooltip="Historio">
-                        <img src="{% static 'images/livreicon.png' %}" alt="iconelivre" class="iconlivre">
-                    </a>
-                <nav class="nav">
-                   <a href="{% url 'page_utilisateur' %}"class="nav-item {% if request.resolver_match.url_name == 'page_utilisateur' %}active{% endif %}" data-tooltip="Accueil">
-                           <img src="{% static 'images/bouton-daccueil.png' %}" alt="accueil" class="iconhome">   
-                    </a>
-                    <a href="{% url 'mes_livres' %}" class="nav-item {% if request.resolver_match.url_name == 'mes_livres' %}active{% endif %}" data-tooltip="Mes Livres">
-                           <img src="{% static 'images/livre-ouvert(3).png' %}" alt="iconlivre" class="icolivre">
-                    </a>
-                    <a href="#Historique" class="nav-item" data-tooltip="Bibliotheque"> 
-                        <img src="{% static 'images/livreble.png' %}" alt="icohisto" class="icohisto">  
-                     </a>
-                     <a href="#notifications" class="nav-item" data-tooltip="Notifications">
-                        <img src="{% static 'images/notification.png' %}" alt="notif" class="notif">
-                     </a>
-                </nav>
+<html lang="fr">
+<head>
+    <title>Historio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/utilisateur.css' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/livreicon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/livreicon.png' %}">
+</head>    
+<body>
+    <div class="layout">
 
-                <a class="profile" data-tooltip="Profil">
-                    {% if request.user.photo_user %}
-                    <img src="{{ request.user.photo_user.url }}" alt="pdp" class="avatar">
-                    {% else %}
-                    <img src="{% static 'images/defaut.png' %}" alt="defaut" class="avatar">
-                    {% endif %}
+        <!-- SIDEBAR -->
+        <aside class="left">
+            <a href="{% url 'home' %}" class="historio" data-tooltip="Historio">
+                <img src="{% static 'images/livreicon.png' %}" alt="iconelivre" class="iconlivre">
+            </a>
+
+            <nav class="nav">
+                <a href="{% url 'home' %}" class="nav-item {% if request.resolver_match.url_name == 'page_utilisateur' %}active{% endif %}" data-tooltip="Accueil">
+                    <img src="{% static 'images/bouton-daccueil.png' %}" alt="accueil" class="iconhome">
                 </a>
-            </aside>
-            <main class="center">
-                <div class="top-bar">
-                    <form class="search-form" role="search">    
-                        <img src="{% static 'images/recherche.png' %}" alt="recherche" class="icorec">
-                        <input type="search" class="search-input" placeholder="Rechercher un livre,un auteur..." aria-label="Champ de recherche">
-                    </form>
-                </div>
-                {% block content %}
-                {% endblock %}       
-                
-                {% block ajouter %}
-                {% endblock %}
-             </main>
-        </div>
-    </body>    
-</html>    
+                <a href="{% url 'mes_livres' %}" class="nav-item {% if request.resolver_match.url_name == 'mes_livres' %}active{% endif %}" data-tooltip="Mes Livres">
+                    <img src="{% static 'images/livre-ouvert(3).png' %}" alt="iconlivre" class="icolivre">
+                </a>
+                <a href="#Historique" class="nav-item" data-tooltip="Bibliotheque">
+                    <img src="{% static 'images/livreble.png' %}" alt="icohisto" class="icohisto">
+                </a>
+                <a href="#notifications" class="nav-item" data-tooltip="Notifications">
+                    <img src="{% static 'images/notification.png' %}" alt="notif" class="notif">
+                </a>
+            </nav>
+
+            <a class="profile" data-tooltip="Profil">
+                {% if request.user.photo_user %}
+                    <img src="{{ request.user.photo_user.url }}" alt="pdp" class="avatar">
+                {% else %}
+                    <img src="{% static 'images/defaut.png' %}" alt="defaut" class="avatar">
+                {% endif %}
+            </a>
+        </aside>
+
+        <!-- CONTENU PRINCIPAL -->
+        <main class="center">
+            <div class="top-bar">
+                <form class="search-form" role="search">
+                    <img src="{% static 'images/recherche.png' %}" alt="recherche" class="icorec">
+                    <input type="search" class="search-input" placeholder="Rechercher un livre, un auteur..." aria-label="Champ de recherche">
+                </form>
+            </div>
+
+            {% block content %}{% endblock %}
+            {% block ajouter %}{% endblock %}
+            {% block modifier %}{% endblock %}
+            {% block acceuil %}{% endblock %}
+        </main>
+
+    </div>
+</body>    
+</html>

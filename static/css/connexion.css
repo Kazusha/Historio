@@ -1,4 +1,6 @@
-
+/* =====================
+   BASE
+===================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +8,7 @@
 }
 
 body {
-    background-color: #FFF9EF;
+    background-color: #f4f4f8;
     display: grid;
     place-items: center;
     min-height: 100vh;
@@ -14,15 +16,18 @@ body {
     font-family: Cambria, Georgia, Times, serif;
 }
 
+/* =====================
+   CONNEXION CONTAINER
+===================== */
 .connexion {
     display: flex;
     align-items: center;
     max-width: 900px;
     width: 100%;
-    background-color: #FFF9EF;
+    background-color: white;
     border: 3px solid #7248cd;
-    border-radius: 15px;
-    box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     overflow: hidden;
 }
 
@@ -47,6 +52,9 @@ body {
     transform: rotate(3deg) scale(1.05);
 }
 
+/* =====================
+   FORM CONTAINER
+===================== */
 .card_container {
     flex: 1;
     padding: 50px 40px;
@@ -63,6 +71,9 @@ body {
     line-height: 1.3;
 }
 
+/* =====================
+   FORM GROUPS
+===================== */
 .form-group {
     display: flex;
     flex-direction: column;
@@ -81,7 +92,7 @@ body {
 .input-field {
     width: 100%;
     padding: 12px 15px;
-    border-radius: 8px;
+    border-radius: 1px;
     border: 2px solid #e0e0e0;
     font-size: 15px;
     font-family: Cambria, Georgia, Times, serif;
@@ -100,6 +111,9 @@ body {
     border-color: #9b7dd4;
 }
 
+/* =====================
+   BUTTONS
+===================== */
 .google-btn {
     display: inline-flex;
     align-items: center;
@@ -109,7 +123,147 @@ body {
     padding: 12px;
     margin: 15px 0 25px 0;
     border: 2px solid #e0e0e0;
-    border-radius: 8px;
+    border-radius: 2px;
+    background-color: white;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+    border-color: #7248cd;
+    box-shadow: 0 2px 8px rgba(114, 72, 205, 0.15);
+    background-color: #fafafa;
+}
+
+.coco {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* =====================
+   DIVIDER
+===================== */
+.divider {
+    text-align: center;
+    margin: 20px 0;
+    position: relative;
+    color: #999;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 42%;
+    height: 1px;
+    background-color: #e0e0e0;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+/* =====================
+   SUBMIT BUTTON
+===================== */
+.submit {
+    width: 100%;
+    padding: 14px;
+    font-size: 17px;
+    font-weight: 600;
+    background-color: #7248cd;
+    color: white;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-family: Cambria, Georgia, Times, serif;
+    transition: all 0.3s ease;
+}
+
+.submit:hover {
+    background-color: #3e0aaf;
+    box-shadow: 0 4px 12px rgba(114, 72, 205, 0.3);
+    transform: translateY(-2px);
+}
+
+.submit:active {
+    transform: translateY(0);
+}
+
+/* =====================
+   ERRORS
+===================== */
+.errorlist {
+    list-style: none;
+    color: #d32f2f;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* =====================
+   ERRORS
+===================== */
+.error-box {
+    background: #ffebee;
+    border: 2px solid #d32f2f;
+    border-radius: 2px;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    display: block;
+    color: #d32f2f;
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: 600;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 768px) {
+    .connexion {
+        flex-direction: column;
+    }
+
+    .image-section {
+        flex: 0 0 auto;
+        min-height: auto;
+        width: 100%;
+        padding: 30px;
+    }
+
+    .card_container {
+        padding: 30px 20px;
+    }
+
+    .titre {
+        margin-bottom: 25px;
+    }
+}
+
+
+.google-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0 25px 0;
+    border: 2px solid #e0e0e0;
+    border-radius: 2px;
     background-color: white;
     text-decoration: none;
     color: #333;
@@ -163,7 +317,7 @@ body {
     background-color: #7248cd;
     color: #FFF9EF;
     border: none;
-    border-radius: 8px;
+    border-radius: 2px;
     cursor: pointer;
     font-family: Cambria, Georgia, Times, serif;
     transition: all 0.3s ease;

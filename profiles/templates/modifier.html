@@ -2,22 +2,26 @@
 {% load static %}
 {% load widget_tweaks %}
 
-{% block content %}
-
+{% block modifier %}
 <div class="titreadd">
-    <h2>Ajouter un livre</h2>
+    <h2>Modifier le livre</h2>
 </div>
 
 <div class="formulaire">
+    {% if livre %}
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <div class="couverture">
             <label for="id_couverture" class="cover-upload">
-                <img src="{% static 'images/plus.png' %}" id="cover-preview" alt="Ajouter une couverture">
+                {% if livre.couverture %}
+                    <img src="{{ livre.couverture.url }}" id="cover-preview" alt="Couverture">
+                {% else %}
+                    <img src="{% static 'images/plus.png' %}" id="cover-preview" alt="Modifier la couverture">
+                {% endif %}
             </label>
             {{ form.couverture }}
-            <small class="cover-hint">Cliquer pour choisir</small>
+            <small class="cover-hint">Cliquer pour modifier</small>
         </div>
 
         <div class="grandgroupe">
@@ -38,11 +42,14 @@
             </div>
 
             <div class="group">
-                <button class="boutton" type="submit">Créer une nouvelle histoire</button>
+                <button class="boutton" type="submit">Enregistrer les modifications</button>
             </div>
         </div>
 
     </form>
+    {% else %}
+    <p>Le livre n'a pas pu être trouvé.</p>
+    {% endif %}
 </div>
 
 <script>

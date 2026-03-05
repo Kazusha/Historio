@@ -44,5 +44,5 @@ class Chapitre(models.Model):
     titre_chap = models.CharField(max_length=50)
     contenu= RichTextField()
 
-class Meta:
-    unique_together=('livre','numero_chap')
+    class Meta:
+        unique_together=('livre','numero_chap')
