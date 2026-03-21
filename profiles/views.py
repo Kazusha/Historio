@@ -13,14 +13,14 @@ def accueil(request):
 
 def register_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST , request.FILES)
+        form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request , "Votre compte a ete creer Vous pouvez maintenant vous connecter")
-            return redirect ('login')
+            messages.success(request, "Votre compte a été créé !")
+            return render(request, 'register.html', {'form': RegisterForm()})  
     else:
-         form = RegisterForm()
-    return render(request , 'register.html', {'form' : form})   
+        form = RegisterForm()
+    return render(request, 'register.html', {'form': form})  
 
 
 
@@ -29,7 +29,8 @@ def login_view(request):
     if form.is_valid():
         user = form.cleaned_data["user"]
         login(request, user)
-        return redirect("page_utilisateur")
+        messages.success(request, "Bienvenue " + user.username + " !")
+        return render(request, "login.html", {"form": LoginForm()})  
     return render(request, "login.html", {"form": form})
 
 @login_required(login_url="/login/")
@@ -54,7 +55,8 @@ def ajouterLivre(request):
            livre= form.save(commit=False)
            livre.user = request.user
            livre.save()
-           return redirect("mes_livres")
+           messages.success(request , "Livre Ajouter avec succes !")
+           return render(request , "ajouterLivre.html" , {"form":AjouterLivre()})
     else:
          form =AjouterLivre()
     return render(request,"ajouterLivre.html",{"form":form})
@@ -76,22 +78,24 @@ def detail_livre(request, id):
     return render(request , 'detail_livre.html' ,{'livre':livre})
 
 @login_required(login_url="/login/")
-def likes(request , id):
-    livre = get_object_or_404(Livre , id=id)
+def likes(request, id):
+    livre = get_object_or_404(Livre, id=id)
     if request.user in livre.likes.all():
         livre.likes.remove(request.user)
+        return redirect(f'/livre/{id}/?action=unlike')
     else:
-        livre.likes.add(request.user)  
-    return redirect('detail_livre' , id=livre.id)
+        livre.likes.add(request.user)
+        return redirect(f'/livre/{id}/?action=like')
 
 @login_required(login_url="/login/")
-def saves(request,id):
-    livre = get_object_or_404(Livre , id=id)
+def saves(request, id):
+    livre = get_object_or_404(Livre, id=id)
     if request.user in livre.saves.all():
         livre.saves.remove(request.user)
+        return redirect(f'/livre/{id}/?action=unsave')
     else:
         livre.saves.add(request.user)
-    return redirect('detail_livre',id=livre.id)    
+        return redirect(f'/livre/{id}/?action=save')    
     
 @login_required(login_url="/login/")
 def ajouterchap_view(request , livre_id):
@@ -120,8 +124,8 @@ def modifier_livre(request, id):
         form = ModifierLivre(request.POST, request.FILES, instance=livre)
         if form.is_valid():
             form.save()
-            messages.success(request, "✅ Ton histoire a été mise à jour avec succès !")
-            return redirect("mes_livres")
+            messages.success(request, " Ton histoire a été mise à jour avec succès !")
+            return render(request , "modifier.html" , {"form":ModifierLivre()})
     else:
         form = ModifierLivre(instance=livre)
     

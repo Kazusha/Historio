@@ -64,59 +64,49 @@
         {% endfor %}
     </div>
 
-    <!-- MODAL à l'intérieur du if livres -->
-    <div id="modal-confirm" class="modal">
-        <div class="modal-content">
-            <img id="modal-couverture" src="" alt="Couverture">
-            <div class="modal-body">
-                <div>
-                    <h3 id="modal-title">Supprimer ce livre ?</h3>
-                    <p id="modal-user"></p>
-                    <ul>
-                        <li>Le livre sera définitivement supprimé.</li>
-                        <li>Vous perdrez toutes les vues et likes associés.</li>
-                        <li>Les utilisateurs ne pourront plus accéder à ce livre.</li>
-                        <li>Cette action est irréversible.</li>
-                    </ul>
-                </div>
-                <div class="modal-actions">
-                    <form id="modal-form" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="modal-btn-confirm">Oui, supprimer</button>
-                    </form>
-                    <button type="button" class="modal-btn-cancel" onclick="closeModal()">Annuler</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
 {% else %}
 
     <div class="empty-state">
         <img src="{% static 'images/livremagic.png' %}" alt="aucun livre" class="empty-icon">
-        <h2>Bonjour {{ request.user.username }}, tu n'as encore créé aucune histoire 😕</h2>
+        <h2>Bonjour {{ request.user.username }}, tu n'as encore créé aucune histoire :(</h2>
         <a href="{% url 'ajouterLivre' %}" class="btn-create">+ Créer une histoire</a>
     </div>
 
 {% endif %}
 
-<!-- SCRIPT en dehors du if/endif pour éviter l'erreur Django -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.5/sweetalert2.all.min.js"></script>
+
 <script>
 function openModal(livreId, titre, couvertureUrl, username) {
-    document.getElementById("modal-title").textContent = "Voulez-vous vraiment supprimer \"" + titre + "\" ?";
-    document.getElementById("modal-couverture").src = couvertureUrl;
-    document.getElementById("modal-user").textContent = username + ", veux-tu vraiment supprimer ce livre ? Conséquences :";
-    document.getElementById("modal-form").action = "/livre/" + livreId + "/supprimer/";
-    document.getElementById("modal-confirm").style.display = "flex";
-}
+    Swal.fire({
+        title: 'Supprimer "' + titre + '" ?',
+        html: `
+            <p style="margin-bottom:8px"><strong>${username}</strong>, veux-tu vraiment supprimer ce livre ?</p>
+         
+        `,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#e74c3c',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Oui, supprimer',
+        cancelButtonText: 'Annuler',
+        reverseButtons: true
+    }).then(result => {
+        if (result.isConfirmed) {
+            const form = document.createElement('form');
+            form.method = 'POST';
+            form.action = '/livre/' + livreId + '/supprimer/';
 
-function closeModal() {
-    document.getElementById("modal-confirm").style.display = "none";
-}
+            const csrf = document.createElement('input');
+            csrf.type = 'hidden';
+            csrf.name = 'csrfmiddlewaretoken';
+            csrf.value = '{{ csrf_token }}';
 
-window.onclick = function(event) {
-    var modal = document.getElementById("modal-confirm");
-    if (event.target === modal) closeModal();
+            form.appendChild(csrf);
+            document.body.appendChild(form);
+            form.submit();
+        }
+    });
 }
 </script>
 

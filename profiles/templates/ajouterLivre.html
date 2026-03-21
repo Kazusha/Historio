@@ -44,7 +44,30 @@
 
     </form>
 </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.5/sweetalert2.all.min.js"></script>
+<script>
+    {% if form.errors %}
+        Swal.fire({
+            title: 'Erreur lors de l\'ajout du livre',
+            text : 'Veillez modifier les informations du formulaires',
+            icon: 'error',
+            confirmButtonText: 'OK'
+            
+        })
+    {% endif %}
 
+    {% for message in messages %}
+       {% if message.tags == 'success' %}
+        Swal.fire({
+            title: 'Ajout réussie',
+            text: '{{ message }}',
+            icon: 'success',
+        }).then(() => {
+            window.location.href= "{% url 'mes_livres' %}";
+        });
+        {% endif %}
+    {% endfor %}
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const input = document.getElementById("id_couverture");

@@ -40,9 +40,9 @@
                 </a>
                 <a href="{% url 'saves' livre.id %}" class="btn-action {% if request.user in livre.saves.all %}saved{% endif %}">
                     {% if request.user in livre.saves.all %}
-                        📚 Sauvegardé
+                     <img src="{% static 'images/save (2).png' %}" alt="saves" class="stat-icon"> Sauvegardé
                     {% else %}
-                        🔖 Sauvegarder
+                       <img src="{% static 'images/save.png' %}" alt="save" class="stat-icon"> Sauvegarder
                     {% endif %}
                 </a>
             </div>
@@ -129,7 +129,10 @@
     width: 20px;
     height: 20px;
 }
-
+.stat-icon {
+    width: 16px;
+    height:16px;
+}
 .actions {
     display: flex;
     gap: 12px;
@@ -233,4 +236,48 @@
     }
 }
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.14.5/sweetalert2.all.min.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const action = params.get('action');
+const titre = `{{ livre.titre|escapejs }}`;
+
+if (action === 'like') {
+    Swal.fire({
+        title: `Aimé !`,
+        text: `Vous avez aimé "${titre}".`,
+        icon: `success`,
+        timer: 1000,
+        showConfirmButton: false,
+        timerProgressBar: true
+    });
+} else if (action === 'unlike') {
+    Swal.fire({
+        title: `Like retiré`,
+        text: `Vous avez retiré votre like.`,
+        icon: `info`,
+        timer: 1000,
+        showConfirmButton: false,
+        timerProgressBar: true
+    });
+} else if (action === 'save') {
+    Swal.fire({
+        title: ` Sauvegardé !`,
+        text: `"${titre}" ajouté à vos sauvegardes.`,
+        icon: `success`,
+        timer: 1000,
+        showConfirmButton: false,
+        timerProgressBar: true
+    });
+} else if (action === 'unsave') {
+    Swal.fire({
+        title: ` Retiré`,
+        text: `Retiré de vos sauvegardes.`,
+        icon: `info`,
+        timer: 1000,
+        showConfirmButton: false,
+        timerProgressBar: true
+    });
+}
+</script>
 {% endblock %}
