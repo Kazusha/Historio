@@ -1,11 +1,10 @@
 from django.urls import path
-from .views import accueil , register_view ,login_view , pageutilisateur , mes_livres ,ajouterLivre,detail_livre,likes,saves,supprimerLivre, home, ajouterchap_view, modifier_livre
+from .views import accueil , register_view ,login_view , mes_livres ,ajouterLivre,detail_livre,likes,saves,supprimerLivre, home, ajouterchap_view, modifier_livre , bibliotheque
 
 urlpatterns = [
     path("", accueil, name="accueil"),
     path('inscription/', register_view , name='inscription'),
     path('login/',login_view, name='login'),
-    path('page_utilisateur/', pageutilisateur ,name ='page_utilisateur'),
     path("mes-livres/", mes_livres, name="mes_livres"),
     path("ajouterLivre",ajouterLivre,name="ajouterLivre"),
     path('livre/<int:id>/' , detail_livre , name='detail_livre'),
@@ -15,5 +14,6 @@ urlpatterns = [
     path('livre/<int:id>/modifier/', modifier_livre, name='modifier_livre'),
     path("home",home,name='home'),
     path('livre/<int:livre_id>/ajouter-chapitre/', ajouterchap_view, name='ajouter_chapitre'),
-    path('livre/<int:livre_id>/chapitres/', ajouterchap_view, name='livre_view_parlivre'),  # Assuming this is the same view for now
+    path('livre/<int:livre_id>/chapitres/', ajouterchap_view, name='livre_view_parlivre'),  
+    path('bibliotheque/',bibliotheque , name='bibliotheque')
 ]

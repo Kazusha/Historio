@@ -35,7 +35,7 @@ def login_view(request):
 
 @login_required(login_url="/login/")
 def pageutilisateur(request):
-    return render(request, "page_utilisateur.html" )
+    return render(request, "home.html" )
 
 @login_required(login_url="/login")
 def home(request):
@@ -131,7 +131,14 @@ def modifier_livre(request, id):
     
     return render(request, "modifier.html", {"form": form, "livre": livre})
 
-
+@login_required(login_url="/login/")
+def bibliotheque(request):
+    livres_aimes= request.user.livres_likes.all()
+    livres_sauvegardes = request.user.livres_saves.all()
+    return render(request , 'bibliotheque.html', {
+        'livres_aimes' : livres_aimes,
+        'livres_sauvegardes': livres_sauvegardes})
+    
 @login_required(login_url='/login/')
 def page_protegee(request):
     return render(request,'Accueil.html')  

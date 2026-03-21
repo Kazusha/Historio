@@ -244,14 +244,14 @@ img {
 }
 
 .livre-card {
-    position: relative;
+    position: center;
     display: flex;
     gap: 20px;
     background: white;
     border-radius: 2px;
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    width: 70%;
+    width: 100%;
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -779,8 +779,3 @@ img {
     }
 }
 
-.stat-icon{
-    width:16px;
-    height: 16px;
-    
-}

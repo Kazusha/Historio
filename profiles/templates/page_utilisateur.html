@@ -20,13 +20,13 @@
             </a>
 
             <nav class="nav">
-                <a href="{% url 'home' %}" class="nav-item {% if request.resolver_match.url_name == 'page_utilisateur' %}active{% endif %}" data-tooltip="Accueil">
+                <a href="{% url 'home' %}" class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}" data-tooltip="Accueil">
                     <img src="{% static 'images/bouton-daccueil.png' %}" alt="accueil" class="iconhome">
                 </a>
                 <a href="{% url 'mes_livres' %}" class="nav-item {% if request.resolver_match.url_name == 'mes_livres' %}active{% endif %}" data-tooltip="Mes Livres">
                     <img src="{% static 'images/livre-ouvert(3).png' %}" alt="iconlivre" class="icolivre">
                 </a>
-                <a href="#Historique" class="nav-item" data-tooltip="Bibliotheque">
+                <a href="{% url 'bibliotheque' %}" class="nav-item {% if request.resolver_match.url_name == 'bibliotheque' %} active {% endif %}" data-tooltip="Bibliotheque">
                     <img src="{% static 'images/livreble.png' %}" alt="icohisto" class="icohisto">
                 </a>
                 <a href="#notifications" class="nav-item" data-tooltip="Notifications">
@@ -56,6 +56,7 @@
             {% block ajouter %}{% endblock %}
             {% block modifier %}{% endblock %}
             {% block acceuil %}{% endblock %}
+            {% block bibliotheque %}{% endblock %}
         </main>
 
     </div>
